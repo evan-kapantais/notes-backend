@@ -24,6 +24,7 @@ let notes = [
 
 const app = express();
 
+app.use(express.static('build'));
 app.use(express.json());
 app.use(cors());
 
