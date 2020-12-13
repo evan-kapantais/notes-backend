@@ -1,25 +1,9 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
-
-console.log('MongoDB: Establishing connection...');
-
-mongoose
-	.connect(process.env.MONGO_URI, {
-		useCreateIndex: true,
-		useFindAndModify: false,
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => {
-		console.log('MongoDB: Connection established.');
-	})
-	.catch((error) =>
-		console.error(`Error connecting to MongoDb: ${error.message}`)
-	);
 
 const noteSchema = new mongoose.Schema({
 	content: {
 		type: String,
+		minLength: 5,
 		required: true,
 	},
 	date: {
